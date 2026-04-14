@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-const PASSWORD = "per2026";
+const PASSWORD = "(mf2026";
 
 function PasswordGate({ children }) {
-  const [authed, setAuthed] = useState(() => sessionStorage.getItem("mgp_auth") === "1");
+  const [authed, setAuthed] = useState(() => sessionStorage.getItem("mfc_auth") === "1");
   const [input, setInput] = useState("");
   const [error, setError] = useState(false);
 
@@ -12,7 +12,7 @@ function PasswordGate({ children }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input === PASSWORD) {
-      sessionStorage.setItem("mgp_auth", "1");
+      sessionStorage.setItem("mfc_auth", "1");
       setAuthed(true);
     } else {
       setError(true);
@@ -23,7 +23,7 @@ function PasswordGate({ children }) {
   return (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh", background: "#060f1a" }}>
       <div style={{ background: "#091929", border: "1px solid #1e3a5f", borderRadius: 12, padding: "40px 48px", minWidth: 320, textAlign: "center" }}>
-        <div style={{ fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 8 }}>Marie Gluesenkamp Perez Dashboard</div>
+        <div style={{ fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 8 }}>Marie Gluesenkamp Perez (MFC) Dashboard</div>
         <div style={{ fontSize: 14, color: "#64748b", marginBottom: 24 }}>Enter password to continue</div>
         <form onSubmit={handleSubmit}>
           <input type="password" value={input} onChange={(e) => { setInput(e.target.value); setError(false); }}
@@ -39,7 +39,7 @@ function PasswordGate({ children }) {
 
 // ─── CLIENT CONFIG ────────────────────────────────────────────────────────────
 const CLIENT = {
-  name: "Marie Gluesenkamp Perez",
+  name: "Marie Gluesenkamp Perez (MFC)",
   cycle: "2025–2026",
   lastUpdated: "April 14, 2026",
   reportWeek: "Current Week",
@@ -184,37 +184,37 @@ const FINANCES = [
     "period": "2025-11",
     "type": "month",
     "totalActBlue": 39099.31,
-    "digitalRaise": 1648.5
+    "digitalRaise": 0.0
   },
   {
     "period": "2025-12",
     "type": "month",
     "totalActBlue": 69391.33,
-    "digitalRaise": 1663.5
+    "digitalRaise": 0.0
   },
   {
     "period": "2026-01",
     "type": "month",
     "totalActBlue": 48476.16,
-    "digitalRaise": 1614.5
+    "digitalRaise": 0.0
   },
   {
     "period": "2026-02",
     "type": "month",
     "totalActBlue": 80462.65,
-    "digitalRaise": 1398.5
+    "digitalRaise": 0.0
   },
   {
     "period": "2026-03",
     "type": "month",
     "totalActBlue": 98905.86,
-    "digitalRaise": 1553.5
+    "digitalRaise": 0.0
   },
   {
     "period": "2026-04",
     "type": "month",
     "totalActBlue": 7791.21,
-    "digitalRaise": 195.0
+    "digitalRaise": 0.0
   }
 ];
 const DIGITAL_PCT_MIN = 10;
@@ -223,13 +223,13 @@ const DIGITAL_PCT_MAX = 15;
 const FINANCE_MONTHLY = {
   period: "April 2026",
   totalActBlue: 7791.21,
-  digitalRaise: 195.0,
+  digitalRaise: 0.0,
   projection: 57354,
 };
 const FINANCE_QUARTERLY = {
   period: "Q2 2026",
   totalActBlue: 344126.52,
-  digitalRaise: 8073.5,
+  digitalRaise: 0.0,
   projection: 395745,
 };
 
@@ -336,12 +336,12 @@ const GOOGLE_ADS = [];
 const GROWTH_CALC = [
   { metric: "Avg Open Rate", value: "22.4%", benchmark: ">14% = Strong", status: "above" },
   { metric: "Avg Click Rate", value: "4.3%", benchmark: ">3.0%", status: "above" },
-  { metric: "Digital % of ActBlue", value: "2.3%", benchmark: "10–15%", status: "below" },
+  { metric: "Digital % of ActBlue", value: "0.0%", benchmark: "10–15%", status: "below" },
 ];
 
 const DEFAULT_HIGHLIGHTS = [
   "Dashboard initialized with data through April 14, 2026",
-  "Digital raise: $8,074 (2.3% of total ActBlue)",
+  "Digital raise: $0 (0.0% of total ActBlue)",
   "Average email open rate: 22.4%",
   "Total ActBlue raised: $344,127",
 ];
@@ -578,7 +578,7 @@ export default function Dashboard() {
 
         <header style={{ position: "sticky", top: 0, zIndex: 100, background: "rgba(6,15,26,0.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid #1e3a5f", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <div style={{ width: 36, height: 36, borderRadius: 8, background: "linear-gradient(135deg,#1d4ed8,#3b82f6)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 800, fontFamily: "'Sora', sans-serif", color: "#fff" }}>{"MG"}</div>
+            <div style={{ width: 36, height: 36, borderRadius: 8, background: "linear-gradient(135deg,#1d4ed8,#3b82f6)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 800, fontFamily: "'Sora', sans-serif", color: "#fff" }}>{"MF"}</div>
             <div>
               <div style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: 15, color: "#e2e8f0", lineHeight: 1.1 }}>{CLIENT.name}</div>
               <div style={{ fontSize: 11, color: "#475569", letterSpacing: "0.06em" }}>{CLIENT.cycle} CAMPAIGN REPORT</div>
