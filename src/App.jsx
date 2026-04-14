@@ -48,14 +48,81 @@ const CLIENT = {
 };
 
 // ─── EMAIL DATA ───────────────────────────────────────────────────────────────
-const EMAIL_TOP_LINES = [];
+const EMAIL_TOP_LINES = [
+  {
+    "subject": "MGP_EM_EN_90DO_251105_1_1",
+    "sendDate": "11/5/25",
+    "period": "weekly",
+    "recipients": 3344,
+    "opens": 825,
+    "openRate": 24.7,
+    "clicks": 127,
+    "clickRate": 3.8,
+    "unsubs": 16
+  },
+  {
+    "subject": "MGP_EM_EN_90DO_251105_1_1",
+    "sendDate": "11/5/25",
+    "period": "weekly",
+    "recipients": 3344,
+    "opens": 819,
+    "openRate": 24.5,
+    "clicks": 137,
+    "clickRate": 4.1,
+    "unsubs": 12
+  },
+  {
+    "subject": "MGP_EM_EN_90DO_251105_1_1",
+    "sendDate": "11/5/25",
+    "period": "weekly",
+    "recipients": 20072,
+    "opens": 5002,
+    "openRate": 24.9,
+    "clicks": 667,
+    "clickRate": 3.3,
+    "unsubs": 80
+  },
+  {
+    "subject": "MGP_EM_EN_90DO_251105_1_1",
+    "sendDate": "11/5/25",
+    "period": "weekly",
+    "recipients": 3344,
+    "opens": 755,
+    "openRate": 22.6,
+    "clicks": 115,
+    "clickRate": 3.5,
+    "unsubs": 13
+  },
+  {
+    "subject": "MGP_EM_EN_90DO_251105_1_1",
+    "sendDate": "11/5/25",
+    "period": "weekly",
+    "recipients": 3344,
+    "opens": 793,
+    "openRate": 23.7,
+    "clicks": 124,
+    "clickRate": 3.7,
+    "unsubs": 16
+  },
+  {
+    "subject": "MGP_EM_SV_180DO_251106_1_1",
+    "sendDate": "11/6/25",
+    "period": "weekly",
+    "recipients": 3751,
+    "opens": 826,
+    "openRate": 22.0,
+    "clicks": 283,
+    "clickRate": 7.6,
+    "unsubs": 11
+  }
+];
 
 const EMAIL_MONTHLY_SUMMARY = {
-  sends: 0,
-  totalRecipients: 0,
-  avgOpenRate: 0.0,
-  avgClickRate: 0.0,
-  totalUnsubs: 0,
+  sends: 10,
+  totalRecipients: 70959,
+  avgOpenRate: 22.4,
+  avgClickRate: 4.3,
+  totalUnsubs: 285,
 };
 const EMAIL_QUARTERLY_SUMMARY = EMAIL_MONTHLY_SUMMARY;
 
@@ -117,31 +184,31 @@ const FINANCES = [
     "period": "2025-11",
     "type": "month",
     "totalActBlue": 39099.31,
-    "digitalRaise": 1644.5
+    "digitalRaise": 1648.5
   },
   {
     "period": "2025-12",
     "type": "month",
     "totalActBlue": 69391.33,
-    "digitalRaise": 1659.5
+    "digitalRaise": 1663.5
   },
   {
     "period": "2026-01",
     "type": "month",
     "totalActBlue": 48476.16,
-    "digitalRaise": 1610.5
+    "digitalRaise": 1614.5
   },
   {
     "period": "2026-02",
     "type": "month",
     "totalActBlue": 80462.65,
-    "digitalRaise": 1394.5
+    "digitalRaise": 1398.5
   },
   {
     "period": "2026-03",
     "type": "month",
     "totalActBlue": 98905.86,
-    "digitalRaise": 1549.5
+    "digitalRaise": 1553.5
   },
   {
     "period": "2026-04",
@@ -162,7 +229,7 @@ const FINANCE_MONTHLY = {
 const FINANCE_QUARTERLY = {
   period: "Q2 2026",
   totalActBlue: 344126.52,
-  digitalRaise: 8053.5,
+  digitalRaise: 8073.5,
   projection: 395745,
 };
 
@@ -267,15 +334,15 @@ const GOOGLE_ADS = [];
 
 // ─── GROWTH CALC ──────────────────────────────────────────────────────────────
 const GROWTH_CALC = [
-  { metric: "Avg Open Rate", value: "0.0%", benchmark: ">14% = Strong", status: "below" },
-  { metric: "Avg Click Rate", value: "0.0%", benchmark: ">3.0%", status: "below" },
+  { metric: "Avg Open Rate", value: "22.4%", benchmark: ">14% = Strong", status: "above" },
+  { metric: "Avg Click Rate", value: "4.3%", benchmark: ">3.0%", status: "above" },
   { metric: "Digital % of ActBlue", value: "2.3%", benchmark: "10–15%", status: "below" },
 ];
 
 const DEFAULT_HIGHLIGHTS = [
   "Dashboard initialized with data through April 14, 2026",
-  "Digital raise: $8,054 (2.3% of total ActBlue)",
-  "Average email open rate: 0.0%",
+  "Digital raise: $8,074 (2.3% of total ActBlue)",
+  "Average email open rate: 22.4%",
   "Total ActBlue raised: $344,127",
 ];
 
