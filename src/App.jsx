@@ -1,356 +1,5 @@
 import { useState } from "react";
 
-const PASSWORD = "mfc";
-
-function PasswordGate({ children }) {
-  const [authed, setAuthed] = useState(() => sessionStorage.getItem("mfc_auth") === "1");
-  const [input, setInput] = useState("");
-  const [error, setError] = useState(false);
-
-  if (authed) return children;
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (input === PASSWORD) {
-      sessionStorage.setItem("mfc_auth", "1");
-      setAuthed(true);
-    } else {
-      setError(true);
-      setInput("");
-    }
-  };
-
-  return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh", background: "#060f1a" }}>
-      <div style={{ background: "#091929", border: "1px solid #1e3a5f", borderRadius: 12, padding: "40px 48px", minWidth: 320, textAlign: "center" }}>
-        <div style={{ fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 8 }}>Marie Gluesenkamp Perez (MFC) Dashboard</div>
-        <div style={{ fontSize: 14, color: "#64748b", marginBottom: 24 }}>Enter password to continue</div>
-        <form onSubmit={handleSubmit}>
-          <input type="password" value={input} onChange={(e) => { setInput(e.target.value); setError(false); }}
-            placeholder="Password" autoFocus
-            style={{ width: "100%", padding: "10px 14px", borderRadius: 8, border: error ? "1px solid #ef4444" : "1px solid #1e3a5f", background: "#060f1a", color: "#fff", fontSize: 15, marginBottom: 8, boxSizing: "border-box", outline: "none" }} />
-          {error && <div style={{ color: "#ef4444", fontSize: 13, marginBottom: 8 }}>Incorrect password</div>}
-          <button type="submit" style={{ width: "100%", padding: "10px 0", borderRadius: 8, background: "#1d4ed8", color: "#fff", border: "none", fontSize: 15, fontWeight: 600, cursor: "pointer", marginTop: 4 }}>Enter</button>
-        </form>
-      </div>
-    </div>
-  );
-}
-
-// ─── CLIENT CONFIG ────────────────────────────────────────────────────────────
-const CLIENT = {
-  name: "Marie Gluesenkamp Perez (MFC)",
-  cycle: "2025–2026",
-  lastUpdated: "April 14, 2026",
-  reportWeek: "Current Week",
-  reportMonth: "April 2026",
-  reportQuarter: "Q2 2026",
-};
-
-// ─── EMAIL DATA ───────────────────────────────────────────────────────────────
-const EMAIL_TOP_LINES = [
-  {
-    "subject": "MGP_EM_EN_90DO_251105_1_1",
-    "sendDate": "11/5/25",
-    "period": "weekly",
-    "recipients": 3344,
-    "opens": 825,
-    "openRate": 24.7,
-    "clicks": 127,
-    "clickRate": 3.8,
-    "unsubs": 16
-  },
-  {
-    "subject": "MGP_EM_EN_90DO_251105_1_1",
-    "sendDate": "11/5/25",
-    "period": "weekly",
-    "recipients": 3344,
-    "opens": 819,
-    "openRate": 24.5,
-    "clicks": 137,
-    "clickRate": 4.1,
-    "unsubs": 12
-  },
-  {
-    "subject": "MGP_EM_EN_90DO_251105_1_1",
-    "sendDate": "11/5/25",
-    "period": "weekly",
-    "recipients": 20072,
-    "opens": 5002,
-    "openRate": 24.9,
-    "clicks": 667,
-    "clickRate": 3.3,
-    "unsubs": 80
-  },
-  {
-    "subject": "MGP_EM_EN_90DO_251105_1_1",
-    "sendDate": "11/5/25",
-    "period": "weekly",
-    "recipients": 3344,
-    "opens": 755,
-    "openRate": 22.6,
-    "clicks": 115,
-    "clickRate": 3.5,
-    "unsubs": 13
-  },
-  {
-    "subject": "MGP_EM_EN_90DO_251105_1_1",
-    "sendDate": "11/5/25",
-    "period": "weekly",
-    "recipients": 3344,
-    "opens": 793,
-    "openRate": 23.7,
-    "clicks": 124,
-    "clickRate": 3.7,
-    "unsubs": 16
-  },
-  {
-    "subject": "MGP_EM_SV_180DO_251106_1_1",
-    "sendDate": "11/6/25",
-    "period": "weekly",
-    "recipients": 3751,
-    "opens": 826,
-    "openRate": 22.0,
-    "clicks": 283,
-    "clickRate": 7.6,
-    "unsubs": 11
-  }
-];
-
-const EMAIL_MONTHLY_SUMMARY = {
-  sends: 10,
-  totalRecipients: 70959,
-  avgOpenRate: 22.4,
-  avgClickRate: 4.3,
-  totalUnsubs: 285,
-};
-const EMAIL_QUARTERLY_SUMMARY = EMAIL_MONTHLY_SUMMARY;
-
-// ─── LIST SIZE ────────────────────────────────────────────────────────────────
-const LIST_SIZE = [
-  {
-    "label": "Update segment sizes weekly. Yellow cells are manual inputs.",
-    "key": "UPDATE",
-    "current": 0,
-    "prev": 0,
-    "change": 0,
-    "goal": null
-  },
-  {
-    "label": "Segment Name",
-    "key": "SEGMEN",
-    "current": 0,
-    "prev": 0,
-    "change": 0,
-    "goal": null
-  },
-  {
-    "label": "Email \u2014 180DO",
-    "key": "EMAIL\u2014",
-    "current": 0,
-    "prev": 0,
-    "change": 0,
-    "goal": null
-  },
-  {
-    "label": "Email \u2014 90DO",
-    "key": "EMAIL\u2014",
-    "current": 0,
-    "prev": 0,
-    "change": 0,
-    "goal": null
-  },
-  {
-    "label": "Email \u2014 365 SF/Local",
-    "key": "EMAIL\u2014",
-    "current": 0,
-    "prev": 0,
-    "change": 0,
-    "goal": null
-  },
-  {
-    "label": "Texting \u2014 NTL",
-    "key": "TEXTIN",
-    "current": 0,
-    "prev": 0,
-    "change": 0,
-    "goal": null
-  }
-];
-
-// ─── FINANCES ─────────────────────────────────────────────────────────────────
-const FINANCES = [
-  {
-    "period": "2025-11",
-    "type": "month",
-    "totalActBlue": 39099.31,
-    "digitalRaise": 0.0
-  },
-  {
-    "period": "2025-12",
-    "type": "month",
-    "totalActBlue": 69391.33,
-    "digitalRaise": 0.0
-  },
-  {
-    "period": "2026-01",
-    "type": "month",
-    "totalActBlue": 48476.16,
-    "digitalRaise": 0.0
-  },
-  {
-    "period": "2026-02",
-    "type": "month",
-    "totalActBlue": 80462.65,
-    "digitalRaise": 0.0
-  },
-  {
-    "period": "2026-03",
-    "type": "month",
-    "totalActBlue": 98905.86,
-    "digitalRaise": 0.0
-  },
-  {
-    "period": "2026-04",
-    "type": "month",
-    "totalActBlue": 7791.21,
-    "digitalRaise": 0.0
-  }
-];
-const DIGITAL_PCT_MIN = 10;
-const DIGITAL_PCT_MAX = 15;
-
-const FINANCE_MONTHLY = {
-  period: "April 2026",
-  totalActBlue: 7791.21,
-  digitalRaise: 0.0,
-  projection: 57354,
-};
-const FINANCE_QUARTERLY = {
-  period: "Q2 2026",
-  totalActBlue: 344126.52,
-  digitalRaise: 0.0,
-  projection: 395745,
-};
-
-// ─── ACQUISITION ROI ──────────────────────────────────────────────────────────
-const ACQUISITION_ROI = [];
-
-// ─── TEXTING ROI ──────────────────────────────────────────────────────────────
-const TEXTING_ROI = [
-  {
-    "campaign": "Campaign Name",
-    "sendDate": "Send Date",
-    "period": "weekly",
-    "sent": 0,
-    "delivered": 0,
-    "responses": 0,
-    "optOuts": 0,
-    "donations": 0,
-    "raised": 0.0
-  },
-  {
-    "campaign": "November 2025 EOM_1",
-    "sendDate": "2025-11-25",
-    "period": "weekly",
-    "sent": 0,
-    "delivered": 0,
-    "responses": 6003,
-    "optOuts": 0,
-    "donations": 0,
-    "raised": 5430.0
-  },
-  {
-    "campaign": "November 2025 EOM_2",
-    "sendDate": "2025-11-25",
-    "period": "weekly",
-    "sent": 0,
-    "delivered": 0,
-    "responses": 6225,
-    "optOuts": 0,
-    "donations": 0,
-    "raised": 5227.0
-  },
-  {
-    "campaign": "EOQ4 251229",
-    "sendDate": "2025-12-29",
-    "period": "weekly",
-    "sent": 0,
-    "delivered": 0,
-    "responses": 4444,
-    "optOuts": 0,
-    "donations": 0,
-    "raised": 3979.0
-  },
-  {
-    "campaign": "EOQ4 251231",
-    "sendDate": "2025-12-31",
-    "period": "weekly",
-    "sent": 0,
-    "delivered": 0,
-    "responses": 6003,
-    "optOuts": 0,
-    "donations": 0,
-    "raised": 5430.0
-  },
-  {
-    "campaign": "EOM_Jan26_1",
-    "sendDate": "2026-02-27",
-    "period": "weekly",
-    "sent": 0,
-    "delivered": 0,
-    "responses": 1604,
-    "optOuts": 0,
-    "donations": 0,
-    "raised": 1370.0
-  },
-  {
-    "campaign": "EOQ-March2026-1",
-    "sendDate": "2026-03-26",
-    "period": "weekly",
-    "sent": 0,
-    "delivered": 0,
-    "responses": 2406,
-    "optOuts": 0,
-    "donations": 0,
-    "raised": 2024.0
-  },
-  {
-    "campaign": "EOQ-March2026-2",
-    "sendDate": "2026-03-26",
-    "period": "weekly",
-    "sent": 0,
-    "delivered": 0,
-    "responses": 1631,
-    "optOuts": 0,
-    "donations": 0,
-    "raised": 1253.0
-  }
-];
-
-// ─── ADS ──────────────────────────────────────────────────────────────────────
-const META_ADS = [];
-const GOOGLE_ADS = [];
-
-// ─── GROWTH CALC ──────────────────────────────────────────────────────────────
-const GROWTH_CALC = [
-  { metric: "Avg Open Rate", value: "22.4%", benchmark: ">14% = Strong", status: "above" },
-  { metric: "Avg Click Rate", value: "4.3%", benchmark: ">3.0%", status: "above" },
-  { metric: "Digital % of ActBlue", value: "0.0%", benchmark: "10–15%", status: "below" },
-];
-
-const DEFAULT_HIGHLIGHTS = [
-  "Dashboard initialized with data through April 14, 2026",
-  "Digital raise: $0 (0.0% of total ActBlue)",
-  "Average email open rate: 22.4%",
-  "Total ActBlue raised: $344,127",
-];
-
-// ─── HELPERS ──────────────────────────────────────────────────────────────────
-const fmt = (n) => n?.toLocaleString() ?? "—";
-const fmtD = (n) => n != null ? `$${n.toLocaleString()}` : "—";
-const fmtP = (n) => n != null ? `${n}%` : "—";
-
 function openRateColor(r) {
   if (r >= 14) return "#4ade80";
   if (r >= 10) return "#fbbf24";
@@ -370,7 +19,7 @@ function digitalPctStatus(p) {
 function Delta({ val }) {
   if (val == null) return null;
   const up = val >= 0;
-  return <span style={{ color: up ? "#22c55e" : "#ef4444", fontWeight: 600, fontSize: 13 }}>{up ? "▲" : "▼"} {Math.abs(val).toFixed(2)}%</span>;
+  return <span style={{ color: up ? "#22c55e" : "#ef4444", fontWeight: 600, fontSize: 13 }}>{up ? "â²" : "â¼"} {Math.abs(val).toFixed(2)}%</span>;
 }
 
 function GoalBar({ current, goal }) {
@@ -395,7 +44,7 @@ function DigitalPctBar({ pct }) {
     <div style={{ marginTop: 10 }}>
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4, fontSize: 12 }}>
         <span style={{ color: "#94a3b8" }}>Digital % of Total Raise</span>
-        <span style={{ color: status.color, fontWeight: 700 }}>{pct.toFixed(1)}% — {status.label}</span>
+        <span style={{ color: status.color, fontWeight: 700 }}>{pct.toFixed(1)}% â {status.label}</span>
       </div>
       <div style={{ position: "relative", background: "#1e3a5f", borderRadius: 99, height: 10 }}>
         <div style={{ position: "absolute", top: 0, bottom: 0, left: `${minMark}%`, width: `${maxMark - minMark}%`, background: "rgba(74,222,128,0.12)", borderLeft: "1px dashed #166534", borderRight: "1px dashed #166534" }} />
@@ -403,7 +52,7 @@ function DigitalPctBar({ pct }) {
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", marginTop: 3, fontSize: 10, color: "#475569" }}>
         <span>0%</span>
-        <span style={{ color: "#4ade80" }}>Target zone: {DIGITAL_PCT_MIN}–{DIGITAL_PCT_MAX}%</span>
+        <span style={{ color: "#4ade80" }}>Target zone: {DIGITAL_PCT_MIN}â{DIGITAL_PCT_MAX}%</span>
         <span>50%</span>
       </div>
     </div>
@@ -562,7 +211,6 @@ export default function Dashboard() {
   const periodLabel = period === "weekly" ? CLIENT.reportWeek : period === "monthly" ? CLIENT.reportMonth : CLIENT.reportQuarter;
 
   return (
-    <PasswordGate>
       <div style={{ minHeight: "100vh", background: "#060f1a", color: "#e2e8f0", fontFamily: "'Inter', sans-serif" }}>
         <style>{`
           @import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap');
@@ -606,7 +254,7 @@ export default function Dashboard() {
           <main style={{ flex: 1, padding: "40px 48px", maxWidth: "calc(100% - 200px)" }}>
 
             <div id="overview">
-              <Section title="Digital Overview" subtitle={`${periodLabel} · ${CLIENT.lastUpdated}`}>
+              <Section title="Digital Overview" subtitle={`${periodLabel} Â· ${CLIENT.lastUpdated}`}>
                 <PeriodToggle active={period} onChange={setPeriod} />
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginBottom: 24 }}>
                   <StatCard label="Total ActBlue" value={fmtD(totalActBlue)} sub="All time" />
@@ -663,7 +311,7 @@ export default function Dashboard() {
             </div>
 
             <div id="finances">
-              <Section title="Finances" subtitle={`ActBlue fundraising — digital target: ${DIGITAL_PCT_MIN}–${DIGITAL_PCT_MAX}%`}>
+              <Section title="Finances" subtitle={`ActBlue fundraising â digital target: ${DIGITAL_PCT_MIN}â${DIGITAL_PCT_MAX}%`}>
                 <PeriodToggle active={period} onChange={setPeriod} />
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginBottom: 20 }}>
                   <StatCard label="Total ActBlue" value={fmtD(totalActBlue)} accent="#60a5fa" />
@@ -740,7 +388,7 @@ export default function Dashboard() {
                           <div style={{ fontSize: 11, color: "#475569" }}>Benchmark: {row.benchmark}</div>
                         </div>
                         <span className={row.status === "above" ? "badge-above" : "badge-below"} style={{ padding: "4px 10px", borderRadius: 20, fontSize: 11, fontWeight: 600, whiteSpace: "nowrap" }}>
-                          {row.status === "above" ? "✓ On Track" : "↓ Needs Attention"}
+                          {row.status === "above" ? "â On Track" : "â Needs Attention"}
                         </span>
                       </div>
                     </div>
@@ -750,12 +398,11 @@ export default function Dashboard() {
             </div>
 
             <div style={{ borderTop: "1px solid #1e3a5f", paddingTop: 24, marginTop: 24, fontSize: 12, color: "#334155", textAlign: "center" }}>
-              Report generated for {CLIENT.name} · {CLIENT.cycle} · {CLIENT.lastUpdated} · Confidential
+              Report generated for {CLIENT.name} Â· {CLIENT.cycle} Â· {CLIENT.lastUpdated} Â· Confidential
             </div>
 
           </main>
         </div>
       </div>
-    </PasswordGate>
   );
 }
